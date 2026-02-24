@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact – Niels Romkes</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap');
+  :root {
+    --bg: #0a0e1a; --bg2: #0f1528; --card: #131929;
+    --blue1: #1a56db; --blue2: #3b82f6; --blue3: #93c5fd; --blue4: #0ea5e9;
+    --text: #e2e8f0; --muted: #94a3b8;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(10,14,26,0.85); backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(59,130,246,0.15);
+    padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center;
+  }
+  .logo { font-weight: 900; font-size: 1.2rem; background: linear-gradient(90deg, var(--blue2), var(--blue3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--blue2); }
+  .btn { display: inline-block; padding: 0.85rem 2rem; border-radius: 8px; font-weight: 600; font-size: 0.95rem; text-decoration: none; transition: all 0.3s; cursor: pointer; border: none; font-family: 'Inter', sans-serif; }
+  .btn-primary { background: linear-gradient(135deg, var(--blue1), var(--blue2)); color: white; box-shadow: 0 0 25px rgba(59,130,246,0.3); }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 40px rgba(59,130,246,0.5); }
+
+  .page-hero {
+    padding: 10rem 2rem 5rem; text-align: center;
+    background: radial-gradient(ellipse at 50% 0%, rgba(26,86,219,0.15) 0%, transparent 60%);
+  }
+  .section-label { color: var(--blue2); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.75rem; }
+  .page-hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; margin-bottom: 1rem; }
+  .page-hero h1 span { background: linear-gradient(135deg, var(--blue2), var(--blue3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .page-hero p { color: var(--muted); max-width: 500px; margin: 0 auto; font-size: 1.05rem; }
+
+  .contact-section { padding: 4rem 2rem 6rem; }
+  .container { max-width: 1000px; margin: 0 auto; }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: 4rem; align-items: start; }
+
+  .contact-info h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 1rem; }
+  .contact-info p { color: var(--muted); margin-bottom: 2rem; font-size: 0.95rem; }
+  .contact-item { display: flex; align-items: center; gap: 0.75rem; color: var(--muted); margin-bottom: 1.25rem; font-size: 0.9rem; }
+  .contact-icon { width: 40px; height: 40px; background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
+
+  .form-card { background: var(--card); border: 1px solid rgba(59,130,246,0.1); border-radius: 16px; padding: 2.5rem; }
+  .form-group { margin-bottom: 1.25rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group label { display: block; font-size: 0.85rem; color: var(--muted); margin-bottom: 0.4rem; }
+  .form-group input, .form-group textarea, .form-group select {
+    width: 100%; background: var(--bg); border: 1px solid rgba(59,130,246,0.2);
+    border-radius: 8px; padding: 0.75rem 1rem; color: var(--text);
+    font-family: 'Inter', sans-serif; font-size: 0.95rem; outline: none; transition: border-color 0.3s;
+  }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+    border-color: var(--blue2); box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
+  }
+  .form-group select option { background: var(--bg2); }
+  .form-group textarea { resize: vertical; min-height: 130px; }
+  .form-success { display: none; background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.3); color: var(--blue3); padding: 1rem; border-radius: 8px; text-align: center; margin-top: 1rem; }
+
+  footer { text-align: center; padding: 2rem; color: var(--muted); font-size: 0.85rem; border-top: 1px solid rgba(59,130,246,0.1); }
+  @media (max-width: 768px) { .nav-links { display: none; } .contact-grid { grid-template-columns: 1fr; } .form-row { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">NR.</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="over-mij.html">Over mij</a></li>
+    <li><a href="projecten.html">Projecten</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="btn btn-primary" style="padding:0.5rem 1.2rem;font-size:0.85rem;">Neem contact op</a>
+</nav>
+
+<div class="page-hero">
+  <div class="section-label">Contact</div>
+  <h1>Laten we <span>samenwerken</span></h1>
+  <p>Heb je een website nodig? Stuur me een bericht en ik reageer binnen 24 uur!</p>
+</div>
+
+<section class="contact-section">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h2>Neem contact op</h2>
+        <p>Of je nu een nieuwe website wil, je huidige site wil verbeteren, of gewoon een vraag hebt — ik help je graag verder.</p>
+        <div class="contact-item">
+          <div class="contact-icon">📧</div>
+          <span>niels@example.com</span>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <span>Nederland</span>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">⚡</div>
+          <span>Reactie binnen 24 uur</span>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">💰</div>
+          <span>Gratis offerte op aanvraag</span>
+        </div>
+      </div>
+
+      <div class="form-card">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Voornaam</label>
+            <input type="text" id="fname" placeholder="Jan">
+          </div>
+          <div class="form-group">
+            <label>Achternaam</label>
+            <input type="text" id="lname" placeholder="de Vries">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>E-mailadres</label>
+          <input type="email" id="email" placeholder="jan@bedrijf.nl">
+        </div>
+        <div class="form-group">
+          <label>Wat heb je nodig?</label>
+          <select id="service">
+            <option value="">Selecteer een dienst...</option>
+            <option>Nieuwe website</option>
+            <option>Website verbeteren</option>
+            <option>Webshop</option>
+            <option>Website onderhoud</option>
+            <option>Anders</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Vertel me over je project</label>
+          <textarea id="message" placeholder="Beschrijf je bedrijf en wat je nodig hebt..."></textarea>
+        </div>
+        <button class="btn btn-primary" onclick="submitForm()" style="width:100%;">Verstuur bericht →</button>
+        <div class="form-success" id="success">✓ Bedankt! Ik neem zo snel mogelijk contact met je op.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Niels Romkes · Webdesign</p>
+</footer>
+
+<script>
+  function submitForm() {
+    const f = document.getElementById('fname').value;
+    const e = document.getElementById('email').value;
+    const m = document.getElementById('message').value;
+    if (!f || !e || !m) { alert('Vul alle verplichte velden in!'); return; }
+    document.getElementById('success').style.display = 'block';
+    ['fname','lname','email','service','message'].forEach(id => document.getElementById(id).value = '');
+  }
+</script>
+</body>
+</html>

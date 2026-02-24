@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projecten – Niels Romkes</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap');
+  :root {
+    --bg: #0a0e1a; --bg2: #0f1528; --card: #131929;
+    --blue1: #1a56db; --blue2: #3b82f6; --blue3: #93c5fd; --blue4: #0ea5e9;
+    --text: #e2e8f0; --muted: #94a3b8;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(10,14,26,0.85); backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(59,130,246,0.15);
+    padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center;
+  }
+  .logo { font-weight: 900; font-size: 1.2rem; background: linear-gradient(90deg, var(--blue2), var(--blue3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--blue2); }
+  .btn { display: inline-block; padding: 0.85rem 2rem; border-radius: 8px; font-weight: 600; font-size: 0.95rem; text-decoration: none; transition: all 0.3s; }
+  .btn-primary { background: linear-gradient(135deg, var(--blue1), var(--blue2)); color: white; box-shadow: 0 0 25px rgba(59,130,246,0.3); }
+  .btn-primary:hover { transform: translateY(-2px); }
+
+  .page-hero {
+    padding: 10rem 2rem 5rem; text-align: center;
+    background: radial-gradient(ellipse at 50% 0%, rgba(26,86,219,0.15) 0%, transparent 60%);
+  }
+  .section-label { color: var(--blue2); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.75rem; }
+  .page-hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; margin-bottom: 1rem; }
+  .page-hero h1 span { background: linear-gradient(135deg, var(--blue2), var(--blue3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .page-hero p { color: var(--muted); max-width: 500px; margin: 0 auto; font-size: 1.05rem; }
+
+  .projects-section { padding: 4rem 2rem 6rem; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.75rem; }
+  .project-card { background: var(--card); border: 1px solid rgba(59,130,246,0.1); border-radius: 16px; overflow: hidden; transition: all 0.3s; }
+  .project-card:hover { transform: translateY(-6px); border-color: rgba(59,130,246,0.4); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+  .project-thumb { height: 200px; display: flex; align-items: center; justify-content: center; font-size: 3.5rem; }
+  .p1 { background: linear-gradient(135deg, #1a56db, #0ea5e9); }
+  .p2 { background: linear-gradient(135deg, #1e3a8a, #3b82f6); }
+  .p3 { background: linear-gradient(135deg, #075985, #38bdf8); }
+  .p4 { background: linear-gradient(135deg, #1d4ed8, #60a5fa); }
+  .project-info { padding: 1.75rem; }
+  .project-info h3 { font-size: 1.15rem; margin-bottom: 0.5rem; }
+  .project-info p { color: var(--muted); font-size: 0.9rem; margin-bottom: 1.25rem; }
+  .project-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
+  .project-tag { background: rgba(14,165,233,0.1); color: var(--blue4); padding: 0.2rem 0.65rem; border-radius: 999px; font-size: 0.75rem; }
+  .project-link { color: var(--blue2); text-decoration: none; font-size: 0.85rem; font-weight: 600; }
+  .project-link:hover { color: var(--blue3); }
+
+  .cta { padding: 5rem 2rem; background: var(--bg2); text-align: center; }
+  .cta h2 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; margin-bottom: 1rem; }
+  .cta p { color: var(--muted); margin-bottom: 2rem; }
+
+  footer { text-align: center; padding: 2rem; color: var(--muted); font-size: 0.85rem; border-top: 1px solid rgba(59,130,246,0.1); }
+  @media (max-width: 768px) { .nav-links { display: none; } }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">NR.</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="over-mij.html">Over mij</a></li>
+    <li><a href="projecten.html" class="active">Projecten</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="btn btn-primary" style="padding:0.5rem 1.2rem;font-size:0.85rem;">Neem contact op</a>
+</nav>
+
+<div class="page-hero">
+  <div class="section-label">Mijn werk</div>
+  <h1>Mijn <span>Projecten</span></h1>
+  <p>Een overzicht van websites die ik heb gebouwd. Meer projecten volgen binnenkort!</p>
+</div>
+
+<section class="projects-section">
+  <div class="container">
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-thumb p1">🍕</div>
+        <div class="project-info">
+          <h3>Restaurant De Hoek</h3>
+          <p>Een moderne website voor een lokaal restaurant, inclusief menu en reserveringssysteem.</p>
+          <div class="project-tags">
+            <span class="project-tag">HTML/CSS</span>
+            <span class="project-tag">JavaScript</span>
+            <span class="project-tag">Responsive</span>
+          </div>
+          <a href="#" class="project-link">Bekijk project →</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-thumb p2">💇</div>
+        <div class="project-info">
+          <h3>Kapsalon Stijl</h3>
+          <p>Strakke website voor een kapsalon met online afspraken maken en fotogalerij.</p>
+          <div class="project-tags">
+            <span class="project-tag">WordPress</span>
+            <span class="project-tag">Webdesign</span>
+            <span class="project-tag">Booking</span>
+          </div>
+          <a href="#" class="project-link">Bekijk project →</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-thumb p3">🏋️</div>
+        <div class="project-info">
+          <h3>Sportschool FitNow</h3>
+          <p>Energieke website voor een sportschool met ledeninfo, prijzen en rooster.</p>
+          <div class="project-tags">
+            <span class="project-tag">HTML/CSS</span>
+            <span class="project-tag">JavaScript</span>
+            <span class="project-tag">Responsive</span>
+          </div>
+          <a href="#" class="project-link">Bekijk project →</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-thumb p4">🏪</div>
+        <div class="project-info">
+          <h3>Lokale Winkel Online</h3>
+          <p>Webshop voor een lokale winkel met productoverzicht en contactmogelijkheden.</p>
+          <div class="project-tags">
+            <span class="project-tag">WordPress</span>
+            <span class="project-tag">Webshop</span>
+            <span class="project-tag">SEO</span>
+          </div>
+          <a href="#" class="project-link">Bekijk project →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="container">
+    <h2>Wil jij ook een mooie website?</h2>
+    <p>Neem contact op en ik help je verder!</p>
+    <a href="contact.html" class="btn btn-primary">Neem contact op</a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Niels Romkes · Webdesign</p>
+</footer>
+</body>
+</html>

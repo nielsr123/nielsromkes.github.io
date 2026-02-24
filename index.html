@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Niels Romkes – Webdesigner</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap');
+  :root {
+    --bg: #0a0e1a; --bg2: #0f1528; --card: #131929;
+    --blue1: #1a56db; --blue2: #3b82f6; --blue3: #93c5fd; --blue4: #0ea5e9;
+    --text: #e2e8f0; --muted: #94a3b8;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(10,14,26,0.85); backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(59,130,246,0.15);
+    padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center;
+  }
+  .logo { font-weight: 900; font-size: 1.2rem; background: linear-gradient(90deg, var(--blue2), var(--blue3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--blue2); }
+  .btn { display: inline-block; padding: 0.85rem 2rem; border-radius: 8px; font-weight: 600; font-size: 0.95rem; text-decoration: none; transition: all 0.3s; cursor: pointer; border: none; }
+  .btn-primary { background: linear-gradient(135deg, var(--blue1), var(--blue2)); color: white; box-shadow: 0 0 25px rgba(59,130,246,0.3); }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 40px rgba(59,130,246,0.5); }
+  .btn-outline { border: 1px solid rgba(59,130,246,0.4); color: var(--blue3); background: transparent; margin-left: 1rem; }
+  .btn-outline:hover { background: rgba(59,130,246,0.1); }
+
+  .hero {
+    min-height: 100vh; display: flex; align-items: center; justify-content: center;
+    text-align: center; padding: 2rem;
+    background: radial-gradient(ellipse at 50% 60%, rgba(26,86,219,0.15) 0%, transparent 70%);
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%233b82f6' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+  }
+  .hero-content { position: relative; z-index: 1; }
+  .hero-badge { display: inline-block; background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.3); color: var(--blue3); padding: 0.3rem 1rem; border-radius: 999px; font-size: 0.85rem; margin-bottom: 1.5rem; }
+  .hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 900; line-height: 1.1; margin-bottom: 1.5rem; }
+  .hero h1 span { background: linear-gradient(135deg, var(--blue2), var(--blue4), var(--blue3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .hero p { font-size: 1.1rem; color: var(--muted); max-width: 500px; margin: 0 auto 2.5rem; }
+
+  .services { padding: 6rem 2rem; background: var(--bg2); }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .section-label { color: var(--blue2); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.75rem; }
+  .section-title { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 800; margin-bottom: 1rem; }
+  .section-sub { color: var(--muted); max-width: 550px; margin-bottom: 3rem; }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+  .service-card { background: var(--card); border: 1px solid rgba(59,130,246,0.1); border-radius: 16px; padding: 2rem; transition: all 0.3s; }
+  .service-card:hover { transform: translateY(-4px); border-color: rgba(59,130,246,0.4); }
+  .service-icon { font-size: 2rem; margin-bottom: 1rem; }
+  .service-card h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+  .service-card p { color: var(--muted); font-size: 0.9rem; }
+
+  footer { text-align: center; padding: 2rem; color: var(--muted); font-size: 0.85rem; border-top: 1px solid rgba(59,130,246,0.1); }
+
+  @media (max-width: 768px) { .nav-links { display: none; } }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">NR.</a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="over-mij.html">Over mij</a></li>
+    <li><a href="projecten.html">Projecten</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="btn btn-primary" style="padding:0.5rem 1.2rem;font-size:0.85rem;">Neem contact op</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">✦ Beschikbaar voor opdrachten</div>
+    <h1>Hallo, ik ben<br><span>Niels Romkes</span></h1>
+    <p>Ik bouw professionele, moderne websites voor bedrijven die online willen groeien.</p>
+    <a href="projecten.html" class="btn btn-primary">Bekijk mijn werk</a>
+    <a href="contact.html" class="btn btn-outline">Neem contact op</a>
+  </div>
+</section>
+
+<section class="services">
+  <div class="container">
+    <div class="section-label">Wat ik doe</div>
+    <h2 class="section-title">Mijn diensten</h2>
+    <p class="section-sub">Ik help bedrijven met een sterke online aanwezigheid door mooie en snelle websites te bouwen.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🎨</div>
+        <h3>Webdesign</h3>
+        <p>Een strak, modern ontwerp dat past bij jouw bedrijf en bezoekers direct aanspreekt.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">💻</div>
+        <h3>Website bouwen</h3>
+        <p>Van ontwerp naar een werkende website, snel geladen en mobielvriendelijk.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔧</div>
+        <h3>Onderhoud</h3>
+        <p>Ik houd je website up-to-date en zorg dat alles altijd blijft werken.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Niels Romkes · Webdesign</p>
+</footer>
+</body>
+</html>
